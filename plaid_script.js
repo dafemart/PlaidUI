@@ -1,7 +1,7 @@
-var AuthEndpoint =  https://development.plaid.com/auth/get;
-var TransactionEndpoint = https://development.plaid.com/transactions/get;
-var BalanceEndpoint = https://development.plaid.com/accounts/balance/get;
-var DeleteEndpoint = https://development.plaid.com/item/remove;
+var AuthEndpoint =  "https://development.plaid.com/auth/get";
+var TransactionEndpoint = "https://development.plaid.com/transactions/get";
+var BalanceEndpoint = "https://development.plaid.com/accounts/balance/get";
+var DeleteEndpoint = "https://development.plaid.com/item/remove";
 
 function processRequest(EndPoint, body){
     var xhr = new XMLHttpRequest();
@@ -13,7 +13,7 @@ function processRequest(EndPoint, body){
     }
     xhr.open("POST", EndPoint, true);
     xhr.setRequestHeader('Content-type','application/json');
-    xhr.send(body);  
+    xhr.send(body);
 }
 
 function createAuthBody(){
@@ -24,7 +24,7 @@ function createAuthBody(){
    authBody["client_id"] = ClientId;
    authBody["secret"] = secret;
    authBody["access_token"] = token;
-   return AuthBody;   
+   return AuthBody;
 }
 
 function createTransactionBody(){
@@ -42,7 +42,7 @@ function createTransactionBody(){
    TransactionBody["end_date"] = EndDate;
    TransactionBody["options"] = options;
    return TransactionBody;
-} 
+}
 
 function createBalanceBody(){
    var ClientId = document.getElementById("Balance_clientId").value;
@@ -68,7 +68,8 @@ function createDeleteBody(){
 
 function sendAuthRequest(){
    var body = createAuthBody();
-   return processRequest(AuthEndpoint, body);   
+   var authenticationData = JSON.parse(processRequest(AuthEndpoint, body));
+   console.log(authenticationData); //delete this one after test is finished
 }
 
 function sendTransactionRequest(){
@@ -88,11 +89,17 @@ function sendDeleteRequest(){
 
 window.onload = function(){
   document.getElementById("Authentication_submit").
-       addEventListener("click",SendAuthRequest,false);
-  document.getElementById("Transaction_submit").
-       addEventListener("click",SendTransactionRequest,false);
+       addEventListener("click",sendAuthRequest,false);
+//  document.getElementById("Transaction_submit").
+  //     addEventListener("click",sendTransactionRequest,false);
   document.getElementById("Balance_submit").
        addEventListener("click",sendBalanceRequest,false);
   document.getElementById("Delete_submit").
-       addEventListener("click",sendDeleteRequest ,false);   
+       addEventListener("click",sendDeleteRequest ,false);
 };
+
+function getAuthenticationData(){
+
+  //Clean up data in Id displayData
+  document.body.appendChild(document.createElement('pre')).innerHTML = JSON.stringify(authenticationDatadata,null,4);
+}
