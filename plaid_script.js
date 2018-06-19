@@ -1,7 +1,7 @@
-var AuthEndpoint =  https://sandbox.plaid.com/auth/get;
-var TransactionEndpoint = https://sandbox.plaid.com/transactions/get;
-var BalanceEndpoint = https://sandbox.plaid.com/accounts/balance/get;
-var DeleteEndpoint = https://sandbox.plaid.com/item/remove;
+var AuthEndpoint =  https://development.plaid.com/auth/get;
+var TransactionEndpoint = https://development.plaid.com/transactions/get;
+var BalanceEndpoint = https://development.plaid.com/accounts/balance/get;
+var DeleteEndpoint = https://development.plaid.com/item/remove;
 
 function processRequest(EndPoint, body){
     var xhr = new XMLHttpRequest();
@@ -9,7 +9,8 @@ function processRequest(EndPoint, body){
        if(this.readyState == 4 && this.status == 200){
           return this.response;
        }
-	    }
+       else return false;
+    }
     xhr.open("POST", EndPoint, true);
     xhr.setRequestHeader('Content-type','application/json');
     xhr.send(body);  
@@ -27,14 +28,71 @@ function createAuthBody(){
 }
 
 function createTransactionBody(){
-   
+   var ClientId = document.getElementById("Transaction_clientId").value;
+   var secret = document.getElementById("Transaction_secret").value;
+   var token = document.getElementById("Transaction_token").value;
+   var StartDate = document.getElementById("Transaction_startDate").value;
+   var EndDate = document.getElementById("Transaction_endDate").value;
+   var options = document.getElementById("Transaction_options").value;
+   var TransactionBody = {};
+   TransactionBody["client_id"] = ClientId;
+   TransactionBody["secret"] = secret;
+   TransactionBody["access_token"] = token;
+   TransactionBody["start_date"] = StartDate;
+   TransactionBody["end_date"] = EndDate;
+   TransactionBody["options"] = options;
+   return TransactionBody;
 } 
+
+function createBalanceBody(){
+   var ClientId = document.getElementById("Balance_clientId").value;
+   var secret = document.getElementById("Balance_secret").value;
+   var token = document.getElementById("Balance_token").value;
+   var BalanceBody = {};
+   BalanceBody["client_id"] = ClientId;
+   BalanceBody["secret"] = secret;
+   BalanceBody["token"] = token;
+   return BalanceBody;
+}
+
+function createDeleteBody(){
+  var ClientId = document.getElementById("Delete_clientId").value;
+  var secret = document.getElementById("Delete_secret").value;
+  var token = document.getElementById("Delete_token").value;
+  var DeleteBody = {};
+  DeleteBody["client_id"] = ClientId;
+  DeleteBody["secret"] = secret;
+  DeleteBody["access_token"] = token;
+  return DeleteBody;
+}
 
 function sendAuthRequest(){
    var body = createAuthBody();
-   processRequest(AuthEndpoint, body);   
+   return processRequest(AuthEndpoint, body);   
+}
+
+function sendTransactionRequest(){
+  var body = createTransactionBody();
+  return processRequest(TransactionEndpoint,body);
+}
+
+function sendBalanceRequest(){
+ var body = createBalanceBody();
+ return processRequest(BalanceEndpoint, body);
+}
+
+function sendDeleteRequest(){
+  var body = createDeleteBody();
+  return processRequest(DeleteEndpoint, body);
 }
 
 window.onload = function(){
-   
+  document.getElementById("Authentication_submit").
+       addEventListener("click",SendAuthRequest,false);
+  document.getElementById("Transaction_submit").
+       addEventListener("click",SendTransactionRequest,false);
+  document.getElementById("Balance_submit").
+       addEventListener("click",sendBalanceRequest,false);
+  document.getElementById("Delete_submit").
+       addEventListener("click",sendDeleteRequest ,false);   
 };
