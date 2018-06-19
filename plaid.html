@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+    <title>Plaid</title>
+  </head>
+  <body>
+    <div class = "container">
+    <h1>Plaid API UI</h1>
+    Note: please do not use IE browser since IE does not support HTML date tag.
+    </div>
+    <div class="container" id = "Authentication">
+       <h1>Authentication</h1>
+      Client ID:<br> <input type="text" id="Authentication_clientId"><br>
+      Secret:  <br>  <input type="text" id="Authentication_secret"><br>
+      Token:   <br>  <input type="text" id="Authentication_token"><br>
+      <input type="submit" id = "Authentication_submit" value="Submit">
+    </div>
+
+    <div class="container" id = "Transaction">
+       <h1>Transaction</h1>
+       Client ID:<br> <input type="text" id="Transaction_clientId"><br>
+      Secret:    <br> <input type="text" id="Transaction_secret"><br>
+      Token:     <br> <input type="text" id="Transaction_token"><br>
+      Start date: <br><input type="date" id="Transaction_startDate"><br>
+      End date:  <br> <input type="date" id="Transaction_endDate"><br>
+      Options:    <br><input type="text" id="Transaction_options"><br>
+      <input type="submit" id = "Transaction_submit" value="Submit">
+    </div>
+
+    <div class="container" id = "Balance">
+       <h1>Balance</h1>
+       Client ID:<br> <input type="text" id="Balance_clientId"><br>
+      Secret:    <br> <input type="text" id="Balance_secret"><br>
+      Token:     <br> <input type="text" id="Balance_token"><br>
+      <input type="submit" id = "Balance_submit" value="Submit">
+    </div>
+
+    <div class="container" id = "Delete">
+       <h1>Delete</h1>
+        Client ID:<br> <input type="text" id="Delete_clientId"><br>
+      Secret:     <br> <input type="text" id="Delete_secret"><br>
+      Token:      <br> <input type="text" id="Delete_token"><br>
+      <input type="submit" id = "Delete_submit" value="Submit">
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  </body>
+</html>
