@@ -31,13 +31,17 @@
                 </div>
             </nav>
 
-            <div class="container" id = "Delete">
-               <h1>Delete</h1>
-                Client ID:<br> <input type="password" id="Delete_clientId"><br>
-              Secret:     <br> <input type="password" id="Delete_secret"><br>
-              Token:      <br> <input type="password" id="Delete_token"><br>
-              <input type="submit" id = "Delete_submit" value="Submit">
+            <div class="container" id = "Remove">
+               <h1>Remove</h1>
+                Client ID:<br> <input type="password" id="Remove_clientId"><br>
+              Secret:     <br> <input type="password" id="Remove_secret"><br>
+              Token:      <br> <input type="password" id="Remove_token"><br>
+              <input type="submit" id = "Remove_submit" value="Submit">
             </div>
-<script src="plaid_script.js"></script>
+            <div>
+              <pre id="authenticationMessage"></pre>
+              <div id="errorMessage"></div>
+            </div>
+<script src="plaid.js"></script>
 </body>
 </html>

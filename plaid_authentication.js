@@ -44,10 +44,11 @@ function processRequest(EndPoint, body){
 
 function getAuthenticationData(authenticationData){
   if(authenticationData.message){
-         document.getElementById("authenticationMessage").innerHTML = '<span class="label label-danger label-center">Incorrect input.</span>';
+         document.getElementById("errorMessage").innerHTML = '<span class="label label-danger label-center">Incorrect input.</span>';
   }
   else{
-  //Clean up data in Id displayData
-  document.body.appendChild(document.createElement('pre')).innerHTML = JSON.stringify(authenticationDatadata,null,4);
+  //Clean up data in Id authenticationMessage first.
+  document.getElementById('authenticationMessage').innerHTML = "";
+  document.getElementById("authenticationMessage").innerHTML = JSON.stringify(authenticationDatadata,null,4);
     }
 }

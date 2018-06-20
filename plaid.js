@@ -1,5 +1,17 @@
 window.onload = () =>{
+  if (document.contains(document.getElementById("Authentication_submit"))) {
     document.getElementById("Authentication_submit").addEventListener("click", getAuthenticationData);
+}
+  else if (document.contains(document.getElementById("Transaction_submit"))) {
+    document.getElementById("Transaction_submit").addEventListener("click", getAuthenticationData);
+}
+else if (document.contains(document.getElementById("Balance_submit"))) {
+  document.getElementById("Balance_submit").addEventListener("click", getAuthenticationData);
+}
+
+else if (document.contains(document.getElementById("Remove_submit"))) {
+  document.getElementById("Remove_submit").addEventListener("click", getAuthenticationData);
+}
 
 }
 
@@ -41,5 +53,13 @@ function getAuthenticationData(){
   //Clean up data in Id displayData
   //document.getElementById('pre').innerHTML = "";
 //  document.getElementById("displayData").innerHTML = JSON.stringify(dataJson,null,"  ");
-  document.body.appendChild(document.createElement('pre')).innerHTML = JSON.stringify(dataJson,null,4);
+  //document.getElementById("authenticationMessage").innerHTML = JSON.stringify(dataJson,null,4);
+//  if (document.contains(document.getElementById('pre'))) {
+    //        document.getElementById("submitbutton").remove();
+//}   else {
+  //    document.body.appendChild(document.createElement('pre')).innerHTML = JSON.stringify(dataJson,null,4);
+//}
+    document.getElementById("authenticationMessage").innerHTML = "";
+    document.getElementById("authenticationMessage").innerHTML = JSON.stringify(dataJson,null,4);
+
 }
