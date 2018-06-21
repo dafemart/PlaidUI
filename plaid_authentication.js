@@ -5,10 +5,6 @@ window.onload = function(){
 
 
 var AuthEndpoint =  "https://development.plaid.com/auth/get";
-var TransactionEndpoint = "https://development.plaid.com/transactions/get";
-var BalanceEndpoint = "https://development.plaid.com/accounts/balance/get";
-var DeleteEndpoint = "https://development.plaid.com/item/remove";
-
 
 function sendAuthRequest(){
    var body = createAuthBody();
@@ -32,7 +28,7 @@ function processRequest(EndPoint, body){
     xhr.onreadystatechange = function(){
        if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200){
         let authenticationData = JSON.parse(xhr.responseText);
-        getAuthenticationData(authenticationData);
+        getData(authenticationData);
        }
     }
 
@@ -42,13 +38,13 @@ function processRequest(EndPoint, body){
 }
 
 
-function getAuthenticationData(authenticationData){
+function getData(data){
   if(authenticationData.message){
          document.getElementById("errorMessage").innerHTML = '<span class="label label-danger label-center">Incorrect input.</span>';
   }
   else{
   //Clean up data in Id authenticationMessage first.
   document.getElementById('authenticationMessage').innerHTML = "";
-  document.getElementById("authenticationMessage").innerHTML = JSON.stringify(authenticationDatadata,null,4);
+  document.getElementById("authenticationMessage").innerHTML = JSON.stringify(data,null,4);
     }
 }
